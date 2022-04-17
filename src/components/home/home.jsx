@@ -7,28 +7,43 @@ import Grid from "../grid/grid";
 import Product from "../product/product";
 import Carrousel from "../carrousel/carrousel";
 import Category from "../category/category";
-import { Banners, Categories, HomeContainer, Products } from "./home.styles";
+import ProductList from "../product-list/product-list";
+import { Banners, Categories, HomeContainer, Products, ViewAllProducts } from "./home.styles";
 
-const Home = () => (
-    <HomeContainer>
-        <Banners>
-            <Slider items={banners.results} />
-        </Banners>
-        <Categories>
-            <Carrousel>
-                {categories.results.map(category => (
-                    <Category key={category.id} category={category} />
-                ))}
-            </Carrousel>
-        </Categories>
-        <Products>
-            <Grid>
-                {products.results.map(item => (
-                    <Product key={item.id} item={item} />
-                ))}
-            </Grid>
-        </Products>
-    </HomeContainer>
-)
+const Home = ({ viewAllProducts =  false, setViewAllProducts }) => {
+    const handleViewAllProduct = () => {
+        if (setViewAllProducts) {
+            setViewAllProducts(true);
+        }
+    }
+    return (
+        <HomeContainer>
+            <Banners>
+                <Slider items={banners.results} />
+            </Banners>
+            <Categories>
+                <Carrousel>
+                    {categories.results.map(category => (
+                        <Category key={category.id} category={category} />
+                    ))}
+                </Carrousel>
+            </Categories>
+            <Products>
+                {viewAllProducts ? (
+                    <ProductList />
+                ) : (
+                    <>
+                        <ViewAllProducts onClick={handleViewAllProduct}>View all products &gt;</ViewAllProducts>
+                        <Grid>
+                            {products.results.map(item => (
+                                <Product key={item.id} item={item} />
+                            ))}
+                        </Grid>
+                    </>
+                )}
+            </Products>
+        </HomeContainer>
+    );
+}
 
 export default Home;

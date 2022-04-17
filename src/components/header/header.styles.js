@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Logo = styled.img`
     width: 170px;
+    cursor: pointer;
 `;
 
 export const HeaderContainer = styled.div`

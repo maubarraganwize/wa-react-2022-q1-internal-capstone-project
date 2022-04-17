@@ -12,7 +12,6 @@ const Slider = ({ items }) => {
     useEffect(() => {
         interval.current = setInterval(() => {
         if (current < items.length - 1) {
-            console.log('add current');
             setCurrent(current + 1)
         }
         else {

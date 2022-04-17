@@ -23,5 +23,13 @@ export const Categories = styled.div`
 `;
 
 export const Products = styled.div`
+    display: grid;
+    justify-content: stretch;
     width: 100%;
+`;
+
+export const ViewAllProducts = styled.div`
+    cursor: pointer;
+    text-align: left;
+    padding: 2rem;
 `;
