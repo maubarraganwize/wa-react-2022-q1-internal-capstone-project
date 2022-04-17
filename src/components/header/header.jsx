@@ -4,10 +4,15 @@ import CartIconImage from '../../images/cart-icon.png';
 import LogoImage from '../../images/logo.png';
 import { CartIcon, HeaderContainer, Logo, Search, SearchBox, SearchIcon } from './header.styles'
 
-function Header() {
+function Header({ viewAllProducts =  false, setViewAllProducts }) {
+    const handleLogoClick = () => {
+        if (setViewAllProducts) {
+            setViewAllProducts(false);
+        }
+    }
     return (
         <HeaderContainer>
-            <Logo alt="Logo" src={LogoImage} />
+            <Logo alt="Logo" src={LogoImage} onClick={handleLogoClick} />
             <Search>
                 <SearchBox type="text" placeholder="Search something..." />
                 <SearchIcon alt="Search" src={SearchIconImage} />
